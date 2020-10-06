@@ -22,6 +22,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
 struct LeftBeard: Shape {
     func path(in rect: CGRect) -> Path {
         //normal
@@ -62,6 +63,40 @@ struct RightBeard: Shape {
         }*/
     }
 }
+struct mushroom: View {
+    var body: some View {
+        Group{//mushroom
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:38,y:121,width:300,height:260))
+            }.fill(Color.green)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:42,y:200,width:35,height:100))
+            }.fill(Color.white)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:300,y:200,width:35,height:100))
+            }.fill(Color.white)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:125,y:140,width:120,height:105))
+            }.fill(Color.white)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:75 ,y:270,width:220,height:130))
+            }.fill(Color(red: 0.983, green: 0.876, blue: 0.762))
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:140,y:280,width:20,height:60))
+            }.fill(Color.black)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:200,y:280,width:20,height:60))
+            }.fill(Color.black)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:146,y:285,width:8,height:20))
+            }.fill(Color.white)
+            Path{ (path)in
+                path.addEllipse(in: CGRect(x:207,y:285,width:8,height:20))
+            }.fill(Color.white)
+        }
+    }
+}
+
 struct IPPROT: View {
     var body: some View {
             ZStack {
@@ -70,12 +105,13 @@ struct IPPROT: View {
                     .scaledToFill()
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .edgesIgnoringSafeArea(.all)
-                Text("小夫我要進來囉")
+                Text("蘑菇真難吃")
                 .font(.system(size: 50, weight: .heavy, design: .rounded))
                 .shadow(radius: 10)
                 .blendMode(.overlay)
                 .foregroundColor(Color(red: 102/255, green: 255/255, blue: 230/255, opacity: 1.0))
-                .offset(x: 0, y: -250)
+                .offset(x: 0, y: -300)
+                    .scaleEffect(0.8)
                 Group{
                     Group {//face
                         Group {
@@ -153,10 +189,13 @@ struct IPPROT: View {
                             .fill(Color.white)
                     }
                     Group {//mouth
-                        LeftBeard().stroke(Color.black, lineWidth: 2)
-                        RightBeard().stroke(Color.black, lineWidth: 2)
-                        Mouth().fill(Color(red:226/255,green:0/255,blue:42/255))
-                        //Mouth().fill(Color(red:94/255,green:38/255,blue:18/255))
+                        //LeftBeard().stroke(Color.black, lineWidth: 2)
+                        //RightBeard().stroke(Color.black, lineWidth: 2)
+                        //dot
+                        LeftBeard().stroke(Color.black, style: StrokeStyle(lineWidth: 3, dash: [3]))
+                        RightBeard().stroke(Color.black,style: StrokeStyle(lineWidth: 3, dash: [3]))
+                        //Mouth().fill(Color(red:226/255,green:0/255,blue:42/255))
+                        Mouth().fill(Color(red:94/255,green:38/255,blue:18/255))
                         Mouth().stroke(Color.black, lineWidth: 2)
                     }
                     Group {//body outside
@@ -218,6 +257,9 @@ struct IPPROT: View {
                         .stroke(Color.black, lineWidth: 3)
                     }
                 }.offset(x:0,y:230)
+                mushroom().scaleEffect(0.1).offset(x:-5,y:120)
+                mushroom().scaleEffect(0.15).offset(x:105,y:235)
+                
             }
         }
     }
